@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w8r-bl-hmi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--お知らせ-->
+        <scene sceneID="82Z-8x-Pgr">
+            <objects>
+                <viewController id="Hqr-0K-pZX" customClass="materialViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G80-Ll-MyZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="RDA-Y6-PKH"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="お知らせ" id="73A-hJ-zUi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ks5-3v-LKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="458" y="-1450"/>
+        </scene>
+        <!--一覧-->
+        <scene sceneID="fEm-wZ-mEt">
+            <objects>
+                <viewController storyboardIdentifier="listViewController" id="FBz-9L-yr3" customClass="ListViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rgb-e9-7u5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kAg-ma-Fzu">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" red="0.49019607840000001" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="103" id="xEr-Gi-Qa3">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="103"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xEr-Gi-Qa3" id="fNR-j3-CMy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FBz-9L-yr3" id="pet-ys-jiX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kAg-ma-Fzu" firstAttribute="top" secondItem="UuS-zr-iwJ" secondAttribute="top" id="0u7-pd-R6r"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="kAg-ma-Fzu" secondAttribute="bottom" constant="-34" id="C9T-3n-yHt"/>
+                            <constraint firstItem="kAg-ma-Fzu" firstAttribute="leading" secondItem="UuS-zr-iwJ" secondAttribute="leading" id="YvN-Mh-3tS"/>
+                            <constraint firstItem="kAg-ma-Fzu" firstAttribute="centerX" secondItem="Rgb-e9-7u5" secondAttribute="centerX" id="sWw-B5-gPL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UuS-zr-iwJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="一覧" id="lnn-3P-dlX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="hgs-v6-RyZ">
+                            <color key="tintColor" red="0.20784313725490194" green="0.23529411764705882" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="AlertWithSender:" destination="FBz-9L-yr3" id="TZR-SX-yc3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="detailTableView" destination="kAg-ma-Fzu" id="e03-NC-qjZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jkv-hR-Cd6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1368.1159420289855" y="-89.0625"/>
+        </scene>
+        <!--詳細-->
+        <scene sceneID="2zK-1w-3lX">
+            <objects>
+                <viewController storyboardIdentifier="pagingMenuViewController" id="nEk-LS-fqc" customClass="PagingMenuViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lvK-fl-Lot">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qIb-Mf-YFc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="詳細" id="JoI-2a-VtP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9W-2E-v8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4049.275362318841" y="-89.0625"/>
+        </scene>
+        <!--TextView-->
+        <scene sceneID="BSs-PE-9V6">
+            <objects>
+                <viewController storyboardIdentifier="TextViewController" title="TextView" id="bVn-cS-4El" customClass="TextViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h0Q-If-ydF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95q-d9-55d">
+                                <rect key="frame" x="52" y="765" width="244" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="kLD-bo-lwg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
+                                <state key="normal" title="保存">
+                                    <color key="titleColor" red="0.92156862750000001" green="0.8980392157" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveButton" destination="bVn-cS-4El" eventType="touchUpInside" id="jfZ-04-A0U"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6hc-SH-fne">
+                                <rect key="frame" x="20" y="163" width="364" height="557"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="15" name="HiraMaruProN-W4"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2w-hr-YgQ">
+                                <rect key="frame" x="320" y="765" width="54" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="zXT-Qp-Jcd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="square.and.arrow.up" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ActivityButton" destination="bVn-cS-4El" eventType="touchUpInside" id="kG7-EX-g9D"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="タイトルを入力して下さい" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ag7-G5-eyt">
+                                <rect key="frame" x="30" y="75" width="354" height="48"/>
+                                <color key="tintColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Lto-AX-kO9"/>
+                                </constraints>
+                                <color key="textColor" red="0.20784313730000001" green="0.23529411759999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ag7-G5-eyt" firstAttribute="leading" secondItem="uv2-Ru-WVO" secondAttribute="leading" constant="30" id="7Rc-GK-lED"/>
+                            <constraint firstItem="uv2-Ru-WVO" firstAttribute="trailing" secondItem="A2w-hr-YgQ" secondAttribute="trailing" constant="40" id="83n-nP-oaM"/>
+                            <constraint firstItem="95q-d9-55d" firstAttribute="leading" secondItem="uv2-Ru-WVO" secondAttribute="leading" constant="52" id="E9P-Ng-MnX"/>
+                            <constraint firstItem="ag7-G5-eyt" firstAttribute="trailing" secondItem="6hc-SH-fne" secondAttribute="trailing" id="Om6-jK-YJX"/>
+                            <constraint firstItem="95q-d9-55d" firstAttribute="bottom" secondItem="A2w-hr-YgQ" secondAttribute="bottom" id="Ptg-bx-eE1"/>
+                            <constraint firstItem="95q-d9-55d" firstAttribute="top" secondItem="A2w-hr-YgQ" secondAttribute="top" id="YLy-gP-1Bq"/>
+                            <constraint firstItem="A2w-hr-YgQ" firstAttribute="leading" secondItem="95q-d9-55d" secondAttribute="trailing" constant="24" id="ZUl-OJ-D6c"/>
+                            <constraint firstItem="6hc-SH-fne" firstAttribute="top" secondItem="ag7-G5-eyt" secondAttribute="bottom" constant="40" id="bcF-1V-mMw"/>
+                            <constraint firstItem="ag7-G5-eyt" firstAttribute="top" secondItem="uv2-Ru-WVO" secondAttribute="top" constant="31" id="j05-8u-sCP"/>
+                            <constraint firstItem="6hc-SH-fne" firstAttribute="leading" secondItem="h0Q-If-ydF" secondAttribute="leadingMargin" id="naV-fx-9ZZ"/>
+                            <constraint firstItem="ag7-G5-eyt" firstAttribute="centerX" secondItem="h0Q-If-ydF" secondAttribute="centerX" id="p9w-PZ-pm8"/>
+                            <constraint firstItem="95q-d9-55d" firstAttribute="top" secondItem="6hc-SH-fne" secondAttribute="bottom" constant="45" id="pzD-4f-1xY"/>
+                            <constraint firstItem="uv2-Ru-WVO" firstAttribute="bottom" secondItem="95q-d9-55d" secondAttribute="bottom" constant="49" id="q6h-j2-6Vk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uv2-Ru-WVO"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="文書" id="7vQ-E7-e2k"/>
+                    <connections>
+                        <outlet property="textField" destination="ag7-G5-eyt" id="NpU-eh-ohI"/>
+                        <outlet property="textView" destination="6hc-SH-fne" id="S1U-NM-E8l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ESm-z7-99q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4962.3188405797109" y="-398.4375"/>
+        </scene>
+        <!--MyUI Navigation Controller-->
+        <scene sceneID="4mG-ZL-Oyx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w8r-bl-hmi" customClass="MyUINavigationController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gpq-1K-uB6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FBz-9L-yr3" kind="relationship" relationship="rootViewController" id="uYg-TR-RFz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYt-84-Uup" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="458" y="-89"/>
+        </scene>
+        <!--ImageView-->
+        <scene sceneID="vPf-7Z-bi6">
+            <objects>
+                <viewController storyboardIdentifier="ImageViewController" title="ImageView" id="slw-g3-xnf" customClass="ImageViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e2k-Qh-QaT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Sj-gH-QnE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="bottom" secondItem="ht3-xe-8su" secondAttribute="bottom" id="Oq6-H6-tam"/>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="centerX" secondItem="e2k-Qh-QaT" secondAttribute="centerX" id="PBa-Mb-HMr"/>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="top" secondItem="ht3-xe-8su" secondAttribute="top" id="TRT-zc-lyw"/>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="leading" secondItem="ht3-xe-8su" secondAttribute="leading" id="ief-9e-ccX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ht3-xe-8su"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="画像" id="QK0-Lm-dI3"/>
+                    <connections>
+                        <outlet property="imageView" destination="7Sj-gH-QnE" id="HYQ-uY-Rug"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Mi-Gw-fff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4965.217391304348" y="292.63392857142856"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="zv1-aV-MGH">
+            <objects>
+                <navigationController storyboardIdentifier="LeftMenuNavigationController" navigationBarHidden="YES" id="3r5-1X-bkD" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="t7I-ed-u0e"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zRJ-oJ-X5Y">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="Qda-pX-hDw" kind="relationship" relationship="rootViewController" id="JXc-t6-rRY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVt-mJ-OwA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="457.97101449275368" y="-754.01785714285711"/>
+        </scene>
+        <!--Side Menu Table View Controller-->
+        <scene sceneID="6TS-3d-n1d">
+            <objects>
+                <tableViewController id="Qda-pX-hDw" customClass="SideMenuTableViewController" customModule="CloneBlackboard" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Ni-AS-H9h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="tintColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.92156862750000001" green="0.8980392157" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <sections>
+                            <tableViewSection id="wNQ-Eh-m6I">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OpV-Vd-MGm" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OpV-Vd-MGm" id="mqp-B1-auh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="お知らせ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bz6-Eh-Cz2">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.20784313730000001" green="0.23529411759999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Hqr-0K-pZX" kind="show" id="bdS-d1-MsS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HtB-Ol-Ktq" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HtB-Ol-Ktq" id="UCb-ed-bha">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カレンダー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4u-U3-lA4">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.20784313730000001" green="0.23529411759999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="CqO-sc-5eh" kind="show" id="C9d-Na-eCQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="I4j-in-3Q8" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I4j-in-3Q8" id="EZC-H7-TUo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="リサイズ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skR-oY-o4q">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.20784313730000001" green="0.23529411759999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="7KX-1s-q13" kind="show" id="yUN-1Q-Iq0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Qda-pX-hDw" id="a4R-gO-L0A"/>
+                            <outlet property="delegate" destination="Qda-pX-hDw" id="cYb-3f-HM5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FlX-at-leb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cpc-Tx-ei7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334.7826086956522" y="-754.01785714285711"/>
+        </scene>
+        <!--カレンダー-->
+        <scene sceneID="CPF-Ge-lXP">
+            <objects>
+                <viewController storyboardIdentifier="Main" id="CqO-sc-5eh" customClass="CalenderViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Sq-vQ-gBL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRZ-Fj-7AS" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="88" width="414" height="440"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy年MM月"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1Sq-vQ-gBL" id="d9S-Wa-eJd"/>
+                                    <outlet property="delegate" destination="1Sq-vQ-gBL" id="eH7-Ej-Y0W"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOi-aN-ASC">
+                                <rect key="frame" x="294" y="655" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="53"/>
+                                <state key="normal" title="＋">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onClick:" destination="CqO-sc-5eh" eventType="touchUpInside" id="Svo-YS-578"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="65c-iz-AZn"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="カレンダー" id="sce-ra-mEZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2L7-TT-yFZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355" y="-1696"/>
+        </scene>
+        <!--Event View Controller-->
+        <scene sceneID="IhW-Bq-eD2">
+            <objects>
+                <viewController storyboardIdentifier="Insert" id="oEj-Pz-ARs" customClass="EventViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y0A-M1-nXw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="8CL-pk-j2c"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsS-k2-GDP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1968" y="-1696"/>
+        </scene>
+        <!--SNSへ-->
+        <scene sceneID="p1z-nm-NPX">
+            <objects>
+                <viewController id="7KX-1s-q13" customClass="resizeViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dlU-5g-gPl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="IJF-Sq-in9"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SNSへ" id="meB-ML-kWU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Z7-qm-Dsy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2254" y="-965"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vYW-fj-6Ls">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AK5-zK-Ti5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s3S-vh-513">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nEk-LS-fqc" kind="relationship" relationship="rootViewController" id="ccR-6F-wHs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VXH-YO-UUs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3139.130434782609" y="-89.0625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="32" height="32"/>
+    </resources>
+</document>
