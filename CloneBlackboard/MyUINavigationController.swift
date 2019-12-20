@@ -14,13 +14,13 @@ class MyUINavigationController: UINavigationController {
         super.viewDidLoad()
 
         //　ナビゲーションバーの背景色
-        navigationBar.barTintColor = UIColor(hex: "ff8d3f", alpha: 0.8)
+        navigationBar.barTintColor = UIColor(hex: "7c5f3d", alpha: 0.8)
         // ナビゲーションバーのアイテムの色　（戻る　＜　とか　読み込みゲージとか）
-        navigationBar.tintColor = UIColor(hex: "353c3f")
+        navigationBar.tintColor = UIColor(hex: "fafffb")
         // ナビゲーションバーのテキストを変更する
         navigationBar.titleTextAttributes = [
             // 文字の色
-            .foregroundColor: UIColor(hex: "353c3f")
+            .foregroundColor: UIColor(hex: "fafffb")
         ]
         // Do any additional setup after loading the view.
     }

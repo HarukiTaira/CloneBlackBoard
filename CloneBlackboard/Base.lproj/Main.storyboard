@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ks5-3v-LKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="458" y="-1450"/>
+            <point key="canvasLocation" x="1190" y="-1696"/>
         </scene>
         <!--一覧-->
         <scene sceneID="fEm-wZ-mEt">
@@ -34,8 +34,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kAg-ma-Fzu">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="tintColor" red="0.49019607840000001" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="separatorColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.68627450980392157" green="0.792156862745098" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.20000000000000001" green="0.22352941176470587" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="103" id="xEr-Gi-Qa3">
                                         <rect key="frame" x="0.0" y="28" width="414" height="103"/>
@@ -63,7 +63,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="一覧" id="lnn-3P-dlX">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="hgs-v6-RyZ">
-                            <color key="tintColor" red="0.20784313725490194" green="0.23529411764705882" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.98039215686274506" green="1" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="AlertWithSender:" destination="FBz-9L-yr3" id="TZR-SX-yc3"/>
                             </connections>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkv-hR-Cd6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1368.1159420289855" y="-89.0625"/>
+            <point key="canvasLocation" x="2422" y="-89"/>
         </scene>
         <!--詳細-->
         <scene sceneID="2zK-1w-3lX">
@@ -103,13 +103,13 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95q-d9-55d">
                                 <rect key="frame" x="52" y="765" width="244" height="48"/>
-                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.48627450980392156" green="0.37254901960784315" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="kLD-bo-lwg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
                                 <state key="normal" title="保存">
-                                    <color key="titleColor" red="0.92156862750000001" green="0.8980392157" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.98039215686274506" green="1" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -121,14 +121,14 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6hc-SH-fne">
-                                <rect key="frame" x="20" y="163" width="364" height="557"/>
+                                <rect key="frame" x="20" y="143" width="364" height="614"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="tintColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.20000000000000001" green="0.22352941179999999" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <attributes>
-                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.22352941176470587" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="15" name="HiraMaruProN-W4"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -138,14 +138,14 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2w-hr-YgQ">
                                 <rect key="frame" x="320" y="765" width="54" height="48"/>
-                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.48627450980392156" green="0.37254901960784315" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="zXT-Qp-Jcd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="square.and.arrow.up" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.98039215690000003" green="1" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -156,18 +156,19 @@
                                     <action selector="ActivityButton" destination="bVn-cS-4El" eventType="touchUpInside" id="kG7-EX-g9D"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="タイトルを入力して下さい" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ag7-G5-eyt">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="タイトルを入力して下さい" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ag7-G5-eyt">
                                 <rect key="frame" x="30" y="75" width="354" height="48"/>
-                                <color key="tintColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="1" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.20000000000000001" green="0.22352941179999999" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Lto-AX-kO9"/>
                                 </constraints>
-                                <color key="textColor" red="0.20784313730000001" green="0.23529411759999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.22352941179999999" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.68627450980392157" green="0.792156862745098" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ag7-G5-eyt" firstAttribute="leading" secondItem="uv2-Ru-WVO" secondAttribute="leading" constant="30" id="7Rc-GK-lED"/>
                             <constraint firstItem="uv2-Ru-WVO" firstAttribute="trailing" secondItem="A2w-hr-YgQ" secondAttribute="trailing" constant="40" id="83n-nP-oaM"/>
@@ -176,11 +177,11 @@
                             <constraint firstItem="95q-d9-55d" firstAttribute="bottom" secondItem="A2w-hr-YgQ" secondAttribute="bottom" id="Ptg-bx-eE1"/>
                             <constraint firstItem="95q-d9-55d" firstAttribute="top" secondItem="A2w-hr-YgQ" secondAttribute="top" id="YLy-gP-1Bq"/>
                             <constraint firstItem="A2w-hr-YgQ" firstAttribute="leading" secondItem="95q-d9-55d" secondAttribute="trailing" constant="24" id="ZUl-OJ-D6c"/>
-                            <constraint firstItem="6hc-SH-fne" firstAttribute="top" secondItem="ag7-G5-eyt" secondAttribute="bottom" constant="40" id="bcF-1V-mMw"/>
+                            <constraint firstItem="6hc-SH-fne" firstAttribute="top" secondItem="ag7-G5-eyt" secondAttribute="bottom" constant="20" id="bcF-1V-mMw"/>
                             <constraint firstItem="ag7-G5-eyt" firstAttribute="top" secondItem="uv2-Ru-WVO" secondAttribute="top" constant="31" id="j05-8u-sCP"/>
                             <constraint firstItem="6hc-SH-fne" firstAttribute="leading" secondItem="h0Q-If-ydF" secondAttribute="leadingMargin" id="naV-fx-9ZZ"/>
                             <constraint firstItem="ag7-G5-eyt" firstAttribute="centerX" secondItem="h0Q-If-ydF" secondAttribute="centerX" id="p9w-PZ-pm8"/>
-                            <constraint firstItem="95q-d9-55d" firstAttribute="top" secondItem="6hc-SH-fne" secondAttribute="bottom" constant="45" id="pzD-4f-1xY"/>
+                            <constraint firstItem="95q-d9-55d" firstAttribute="top" secondItem="6hc-SH-fne" secondAttribute="bottom" constant="8" id="pzD-4f-1xY"/>
                             <constraint firstItem="uv2-Ru-WVO" firstAttribute="bottom" secondItem="95q-d9-55d" secondAttribute="bottom" constant="49" id="q6h-j2-6Vk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uv2-Ru-WVO"/>
@@ -211,7 +212,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYt-84-Uup" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="458" y="-89"/>
+            <point key="canvasLocation" x="1513" y="-89"/>
         </scene>
         <!--ImageView-->
         <scene sceneID="vPf-7Z-bi6">
@@ -225,12 +226,12 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.68627450980392157" green="0.792156862745098" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="bottom" secondItem="ht3-xe-8su" secondAttribute="bottom" id="Oq6-H6-tam"/>
-                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="centerX" secondItem="e2k-Qh-QaT" secondAttribute="centerX" id="PBa-Mb-HMr"/>
-                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="top" secondItem="ht3-xe-8su" secondAttribute="top" id="TRT-zc-lyw"/>
-                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="leading" secondItem="ht3-xe-8su" secondAttribute="leading" id="ief-9e-ccX"/>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="top" secondItem="ht3-xe-8su" secondAttribute="top" id="I7t-l8-I5i"/>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="leading" secondItem="ht3-xe-8su" secondAttribute="leading" id="PzT-cD-8Fh"/>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="bottom" secondItem="ht3-xe-8su" secondAttribute="bottom" id="QpK-D9-g0t"/>
+                            <constraint firstItem="7Sj-gH-QnE" firstAttribute="centerX" secondItem="e2k-Qh-QaT" secondAttribute="centerX" id="f7J-Eo-1DM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ht3-xe-8su"/>
                     </view>
@@ -262,7 +263,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVt-mJ-OwA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="457.97101449275368" y="-754.01785714285711"/>
+            <point key="canvasLocation" x="438" y="-1023"/>
         </scene>
         <!--Side Menu Table View Controller-->
         <scene sceneID="6TS-3d-n1d">
@@ -313,9 +314,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="CqO-sc-5eh" kind="show" id="C9d-Na-eCQ"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="I4j-in-3Q8" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
@@ -349,54 +347,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cpc-Tx-ei7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1334.7826086956522" y="-754.01785714285711"/>
-        </scene>
-        <!--カレンダー-->
-        <scene sceneID="CPF-Ge-lXP">
-            <objects>
-                <viewController storyboardIdentifier="Main" id="CqO-sc-5eh" customClass="CalenderViewController" customModule="CloneBlackboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1Sq-vQ-gBL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRZ-Fj-7AS" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="440"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy年MM月"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="dataSource" destination="1Sq-vQ-gBL" id="d9S-Wa-eJd"/>
-                                    <outlet property="delegate" destination="1Sq-vQ-gBL" id="eH7-Ej-Y0W"/>
-                                </connections>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOi-aN-ASC">
-                                <rect key="frame" x="294" y="655" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="53"/>
-                                <state key="normal" title="＋">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onClick:" destination="CqO-sc-5eh" eventType="touchUpInside" id="Svo-YS-578"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="65c-iz-AZn"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="カレンダー" id="sce-ra-mEZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2L7-TT-yFZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1355" y="-1696"/>
+            <point key="canvasLocation" x="1190" y="-1023"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="IhW-Bq-eD2">
@@ -427,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Z7-qm-Dsy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2254" y="-965"/>
+            <point key="canvasLocation" x="2745" y="-1696"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vYW-fj-6Ls">
@@ -449,6 +400,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="square.and.arrow.up" catalog="system" width="32" height="32"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
     </resources>
 </document>

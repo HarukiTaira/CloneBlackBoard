@@ -46,7 +46,7 @@ class PagingMenuViewController: TabmanViewController {
             button.selectedTintColor = UIColor(hex: "353c3f")
             button.tintColor = UIColor(hex: "353c3f", alpha: 0.3)
         }
-        bar.indicator.tintColor = UIColor.orange
+        bar.indicator.tintColor = UIColor(hex: "7c5f3d")
         bar.indicator.overscrollBehavior = .bounce
         bar.indicator.weight = .medium
         

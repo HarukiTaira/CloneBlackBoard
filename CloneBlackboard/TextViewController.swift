@@ -28,9 +28,31 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
     @IBOutlet var textField:UITextField!
     
     override func viewDidLoad() {
+        textView.keyboardDismissMode = .onDrag
+        textView.keyboardDismissMode = .interactive
         super.viewDidLoad()
         textView.delegate = self
         textField.delegate = self
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.layer.borderWidth = 1.0
+        textView.layer.cornerRadius = 10.0
+        textView.layer.masksToBounds = true
+        
+        // ツールバー生成
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        // スタイルを設定
+        toolBar.barStyle = UIBarStyle.default
+        // 画面幅に合わせてサイズを変更
+        toolBar.sizeToFit()
+        // 閉じるボタンを右に配置するためのスペース?
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        // 閉じるボタン
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(TextViewController.commitButtonTapped))
+        // スペース、閉じるボタンを右側に配置
+        toolBar.items = [spacer, commitButton]
+        // textViewのキーボードにツールバーを設定
+        textView.inputAccessoryView = toolBar
+        
         
         
         if !isNew {
@@ -46,6 +68,18 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
         
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func commitButtonTapped() {
+        self.view.endEditing(true)
+    }
 //    @IBAction func snsButton(){
 //        let text = "何かデフォルトで欄に入っててほしい文字列"
 //        let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -55,6 +89,8 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
 //        }
 //    }
     @IBAction func ActivityButton(){
+        let button = IconButton()
+        view.layout(button)
         if let sharetext = textView.text {
           //UIActivityViewControllerに渡す配列
           let shareItems = [sharetext]
@@ -67,10 +103,8 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
     }
     @IBAction func saveButton(){
         let button = RaisedButton()
+        button.pulseColor = .white
         view.layout(button)
-            .width(ButtonLayout.Raised.width)
-            .height(ButtonLayout.Raised.height)
-            .center(offsetY:ButtonLayout.Raised.offsetY)
         if !isNew {
             guard let id = passedID else {
                 print("IDガアリマセン")
@@ -143,6 +177,7 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
             alertController.addAction(cancelButton)
             
             // self.present(nextView, animated: true, completion: nil)
+                        
             present(alertController,animated: true,completion: nil)
         }
         

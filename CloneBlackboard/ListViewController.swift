@@ -1,17 +1,18 @@
 import UIKit
 import RealmSwift
 import SwiftyJSON
-import SideMenu
+//import SideMenu
 import CropViewController
 import DZNEmptyDataSet
-
- var googleAPIKey = APIkey
+import VisionKit
+import Vision
 
 class ListViewController: UIViewController,UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropViewControllerDelegate{
+UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropViewControllerDelegate,VNDocumentCameraViewControllerDelegate{
     
     var itemList: [TodoRealm] = []
     var selectedImage:UIImage!
+    var googleAPIKey = ""
     var googleURL: URL {
         return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
     }
@@ -19,12 +20,13 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
     var croppingStyle = CropViewCroppingStyle.default
     var croppedRect = CGRect.zero
     var croppedAngle = 0
+    var visionImage : UIImage!
     let cellHeigh:CGFloat = 103
     let session = URLSession.shared
     
     @IBOutlet var detailTableView: UITableView!
     fileprivate let refreshCtl = UIRefreshControl()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +41,11 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         
         
         detailTableView.refreshControl = refreshCtl
-              refreshCtl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
+        refreshCtl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
         //線消し
         detailTableView.tableFooterView = UIView()
-        setupSideMenu()
-//        self.detailTableView.reloadData()
+//        setupSideMenu()
+        //        self.detailTableView.reloadData()
         
         //        let realm = try! Realm()
         
@@ -66,7 +68,6 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
     private func loadData(){
         itemList = TodoRealm.loadAll() ?? []
         detailTableView.reloadData()
-
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -93,8 +94,8 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
     //MARK:didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)番目の行が選択されました。")
-//        print(itemList[indexPath.row].title)
-//        print(itemList[indexPath.row].detail)
+        //        print(itemList[indexPath.row].title)
+        //        print(itemList[indexPath.row].detail)
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
         let nextView = storyboard.instantiateViewController(withIdentifier: "pagingMenuViewController") as! PagingMenuViewController
         nextView.passedTitle = itemList[indexPath.row].title
@@ -109,46 +110,59 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
     }
     // セルの削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
-        
-
-        let selectedId = self.itemList[indexPath.row].id
-        if(editingStyle == UITableViewCell.EditingStyle.delete) {
-            // Realm内のデータを削除
-            do{
-                let realm = try Realm()
-                try realm.write {
-                    realm.delete(self.itemList[indexPath.row])
+        let alert = UIAlertController(title: "注意", message: "削除してよろしいですか？", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+            let selectedId = self.itemList[indexPath.row].id
+            if(editingStyle == UITableViewCell.EditingStyle.delete) {
+                // Realm内のデータを削除
+                do{
+                    let realm = try Realm()
+                    try realm.write {
+                        realm.delete(self.itemList[indexPath.row])
+                    }
+                    //                print(itemList)
+                    self.itemList.remove(at: indexPath.row)
+                    //                self.itemList = itemList.filter { (item) -> Bool in
+                    //                    return item.id != selectedId
+                    //                }
+                    
+                    self.detailTableView.deleteRows(at: [indexPath], with:UITableView.RowAnimation.fade)
+                    
+                    //                self.itemList = TodoRealm.loadAll() ?? []
+                    self.detailTableView.reloadData()
+                } catch let error as NSError {
+                    print(error.localizedDescription)
                 }
-//                print(itemList)
-                self.itemList.remove(at: indexPath.row)
-//                self.itemList = itemList.filter { (item) -> Bool in
-//                    return item.id != selectedId
-//                }
                 
-                detailTableView.deleteRows(at: [indexPath], with:UITableView.RowAnimation.fade)
-                
-//                self.itemList = TodoRealm.loadAll() ?? []
-                self.detailTableView.reloadData()
-            } catch let error as NSError {
-                print(error.localizedDescription)
             }
+            // セルの高さを設定
+            func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+                tableView.estimatedRowHeight = 100
+                return UITableView.automaticDimension
+            }
+            alert.dismiss(animated: true, completion: nil)
+        }
+        let cancel = UIAlertAction(title: "キャンセル", style: .cancel){
+            (action) -> Void in
             
+            alert.dismiss(animated: true, completion: nil)
         }
-        // セルの高さを設定
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            tableView.estimatedRowHeight = 100
-            return UITableView.automaticDimension
-        }
+        alert.addAction(action)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     //MARK:Alert
+    let font = UIFont(name: "写真", size: 16)
     
     @IBAction func Alert(sender: UIButton){
         let alert : UIAlertController = UIAlertController(title: "写真", message: "以下から選択して下さい", preferredStyle: .actionSheet)
-    
+        
         let cameraAction = UIAlertAction(title: "カメラ起動", style: .default) { (UIAlertAction) in
             let sourceType:UIImagePickerController.SourceType =
                 UIImagePickerController.SourceType.camera
+            
             // カメラが利用可能かチェック
             if UIImagePickerController.isSourceTypeAvailable(
                 UIImagePickerController.SourceType.camera){
@@ -157,7 +171,9 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
                 cameraPicker.sourceType = sourceType
                 cameraPicker.delegate = self
                 self.present(cameraPicker, animated: true, completion: nil)
-                
+                //                let cameraViewController = VNDocumentCameraViewController()
+                //                cameraViewController.delegate = self
+                //                self.present(cameraViewController, animated: true)
             }
             else{
                 print("error")
@@ -198,17 +214,23 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         self.present(alert, animated: true, completion: nil)
         
     }
-    
-    //MARK:setupSideMenu
-    private func setupSideMenu() {
-        // Define the menus
-        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
-        
-        // Enable gestures. The left and/or right menus must be set up above for these to work.
-        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
-        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        controller.dismiss(animated: true)
+        for pageIndex in 0 ..< scan.pageCount{
+            visionImage = scan.imageOfPage(at: pageIndex)
+            selectedImage = visionImage
+        }
     }
+//    //MARK:setupSideMenu
+//    private func setupSideMenu() {
+//        // Define the menus
+//        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+//
+//        // Enable gestures. The left and/or right menus must be set up above for these to work.
+//        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+//        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+//    }
     
 }
 
@@ -236,7 +258,7 @@ extension ListViewController {
                     let numLabels: Int = labelAnnotations.count
                     var labels: Array<String> = []
                     if numLabels > 0 {
-                        var labelResultsText:String = "Labels found: "
+                        var labelResultsText:String = ""
                         for index in 0..<numLabels {
                             let label = labelAnnotations[index]["description"].stringValue
                             labels.append(label)
@@ -246,7 +268,7 @@ extension ListViewController {
                             if labels[labels.count - 1] != label {
                                 labelResultsText += "\(label), "
                             } else {
-                                labelResultsText += "\(label)"
+                                labelResultsText += "\(label)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                             }
                         }
                         //MARK:値渡し
@@ -254,7 +276,7 @@ extension ListViewController {
                         let nextView = storyboard.instantiateViewController(withIdentifier: "pagingMenuViewController") as! PagingMenuViewController
                         nextView.passedText = labelResultsText
                         nextView.passedImage = self.selectedImage
-            
+                        
                         self.show(nextView,sender: nil)
                         
                     } else {
@@ -276,7 +298,6 @@ extension ListViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[.originalImage] as? UIImage {
-            
             
             let cropController = CropViewController(croppingStyle: croppingStyle, image: pickedImage)
             cropController.delegate = self
@@ -301,7 +322,7 @@ extension ListViewController {
             
             
         }
-//        dismiss(animated: true, completion: nil)
+        //        dismiss(animated: true, completion: nil)
     }
     
     
@@ -445,9 +466,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 //}
 //MARK:Empty
 extension ListViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
-    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "art-track.png")
-    }
+    
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "履歴はありません"
         let font = UIFont.boldSystemFont(ofSize: 18)
@@ -455,7 +474,7 @@ extension ListViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
         
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "写真を撮って新しく読み取ってみましょう"
+        let text = "写真を撮って新しく読み取ろう!"
         let font = UIFont.systemFont(ofSize: 14)
         return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: font,NSAttributedString.Key.foregroundColor: UIColor.black])
     }
