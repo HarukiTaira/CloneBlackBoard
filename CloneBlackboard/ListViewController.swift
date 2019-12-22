@@ -23,6 +23,7 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
     var visionImage : UIImage!
     let cellHeigh:CGFloat = 103
     let session = URLSession.shared
+     let cellSpacingHeight: CGFloat = 5
     
     @IBOutlet var detailTableView: UITableView!
     fileprivate let refreshCtl = UIRefreshControl()
@@ -35,7 +36,7 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         detailTableView.dataSource = self
         detailTableView.emptyDataSetSource = self
         detailTableView.emptyDataSetDelegate = self
-        
+        detailTableView.separatorInset = .zero
         //カスタムセルの登録
         detailTableView.register(UINib(nibName: "CustomCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
         
@@ -108,6 +109,14 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         // 別の画面に遷移
         self.show(nextView, sender: nil)
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
     // セルの削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         let alert = UIAlertController(title: "注意", message: "削除してよろしいですか？", preferredStyle: .alert)
@@ -167,13 +176,13 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
             if UIImagePickerController.isSourceTypeAvailable(
                 UIImagePickerController.SourceType.camera){
                 // インスタンスの作成
-                let cameraPicker = UIImagePickerController()
-                cameraPicker.sourceType = sourceType
-                cameraPicker.delegate = self
-                self.present(cameraPicker, animated: true, completion: nil)
-                //                let cameraViewController = VNDocumentCameraViewController()
-                //                cameraViewController.delegate = self
-                //                self.present(cameraViewController, animated: true)
+//                let cameraPicker = UIImagePickerController()
+//                cameraPicker.sourceType = sourceType
+//                cameraPicker.delegate = self
+//                self.present(cameraPicker, animated: true, completion: nil)
+                                let cameraViewController = VNDocumentCameraViewController()
+                                cameraViewController.delegate = self
+                                self.present(cameraViewController, animated: true)
             }
             else{
                 print("error")
@@ -219,6 +228,8 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         for pageIndex in 0 ..< scan.pageCount{
             visionImage = scan.imageOfPage(at: pageIndex)
             selectedImage = visionImage
+            let binaryImageData = base64EncodeImage(self.selectedImage)
+            createRequest(with: binaryImageData)
         }
     }
 //    //MARK:setupSideMenu
@@ -255,18 +266,19 @@ extension ListViewController {
                     
                     // Get label annotations
                     let labelAnnotations: JSON = responses["textAnnotations"]
+                    print(labelAnnotations)
                     let numLabels: Int = labelAnnotations.count
                     var labels: Array<String> = []
                     if numLabels > 0 {
                         var labelResultsText:String = ""
-                        for index in 0..<numLabels {
+                        for index in 1..<numLabels {
                             let label = labelAnnotations[index]["description"].stringValue
                             labels.append(label)
                         }
                         for label in labels {
                             // if it's not the last item add a comma
                             if labels[labels.count - 1] != label {
-                                labelResultsText += "\(label), "
+                                labelResultsText += "\(label) "
                             } else {
                                 labelResultsText += "\(label)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                             }
@@ -302,7 +314,7 @@ extension ListViewController {
             let cropController = CropViewController(croppingStyle: croppingStyle, image: pickedImage)
             cropController.delegate = self
             
-            self.selectedImage = pickedImage
+//            self.selectedImage = pickedImage
             
             if croppingStyle == .circular {
                 if picker.sourceType == .camera {
@@ -312,8 +324,7 @@ extension ListViewController {
                 } else {
                     picker.pushViewController(cropController, animated: true)
                 }
-            }
-            else { //otherwise dismiss, and then present from the main controller
+            }else { //otherwise dismiss, and then present from the main controller
                 picker.dismiss(animated: true, completion: {
                     self.present(cropController, animated: true, completion: nil)
                     //self.navigationController!.pushViewController(cropController, animated: true)
@@ -324,6 +335,7 @@ extension ListViewController {
         }
         //        dismiss(animated: true, completion: nil)
     }
+
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

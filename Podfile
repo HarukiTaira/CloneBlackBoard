@@ -14,18 +14,12 @@ target 'CloneBlackboard' do
 
   pod 'RealmSwift'
 
-  pod 'SideMenu', '~> 6.0'
-
-  pod 'FSCalendar'
-
-  pod 'CalculateCalendarLogic'
-  
   pod 'NYXImagesKit'
 
 pod 'CropViewController'
 
-pod 'Material', '~> 3.1.0'
-
 pod 'DZNEmptyDataSet'
+
+
   
 end

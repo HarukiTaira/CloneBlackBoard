@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 import Realm
 import NYXImagesKit
-import Material
 
 class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
     
@@ -33,9 +32,9 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
         super.viewDidLoad()
         textView.delegate = self
         textField.delegate = self
-        textView.layer.borderColor = UIColor.black.cgColor
-        textView.layer.borderWidth = 1.0
-        textView.layer.cornerRadius = 10.0
+//        textView.layer.borderColor = UIColor.black.cgColor
+//        textView.layer.borderWidth = 1.0
+//        textView.layer.cornerRadius = 10.0
         textView.layer.masksToBounds = true
         
         // ツールバー生成
@@ -89,8 +88,8 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
 //        }
 //    }
     @IBAction func ActivityButton(){
-        let button = IconButton()
-        view.layout(button)
+//        let button = IconButton()
+//        view.layout(button)
         if let sharetext = textView.text {
           //UIActivityViewControllerに渡す配列
           let shareItems = [sharetext]
@@ -102,9 +101,9 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
 
     }
     @IBAction func saveButton(){
-        let button = RaisedButton()
-        button.pulseColor = .white
-        view.layout(button)
+//        let button = RaisedButton()
+//        button.pulseColor = .white
+//        view.layout(button)
         if !isNew {
             guard let id = passedID else {
                 print("IDガアリマセン")
@@ -133,15 +132,6 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
             
             // self.present(nextView, animated: true, completion: nil)
             present(alertController,animated: true,completion: nil)
-//            do {
-//                let realm = try Realm()
-//                let todo = realm.objects(TodoRealm.self).filter("id==\(id)").first
-//                todo?.update(title: textField.text!, detail: textView.text!)
-//                print("こうしんできました！！！")
-//                self.navigationController?.popViewController(animated: true)
-//            } catch let error as NSError {
-//                print(error.localizedDescription)
-//            }
         } else {
             let returnStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
             let returnView = returnStoryboard.instantiateViewController(withIdentifier: "listViewController") as! ListViewController
@@ -155,7 +145,12 @@ class TextViewController: UIViewController,UITextFieldDelegate,UITextViewDelegat
                 print("保存失敗")
                 return
             }
-            customMemo.title = textField.text!
+            if textField.text == ""{
+                textField.text = dateFormatter.string(from: dt)
+                customMemo.title = textField.text!
+            }else{
+                customMemo.title = textField.text!
+            }
             customMemo.detail = textView.text!
             customMemo.time = dateFormatter.string(from: dt)
             let image = passedImageSave

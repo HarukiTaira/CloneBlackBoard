@@ -1,16 +1,7 @@
 PODS:
   - AutoInsetter (1.8.0)
-  - CalculateCalendarLogic (0.3.0)
   - CropViewController (2.5.2)
   - DZNEmptyDataSet (1.8.1)
-  - FSCalendar (2.8.0)
-  - Material (3.1.8):
-    - Material/Core (= 3.1.8)
-  - Material/Core (3.1.8):
-    - Motion (~> 3.1.1)
-  - Motion (3.1.3):
-    - Motion/Core (= 3.1.3)
-  - Motion/Core (3.1.3)
   - NYXImagesKit (2.3)
   - Pageboy (3.5.0)
   - Realm (3.21.0):
@@ -18,57 +9,46 @@ PODS:
   - Realm/Headers (3.21.0)
   - RealmSwift (3.21.0):
     - Realm (= 3.21.0)
-  - SideMenu (6.4.6)
   - SwiftyJSON (5.0.0)
   - Tabman (2.6.3):
     - AutoInsetter (~> 1.8.0)
     - Pageboy (~> 3.5.0)
+  - VegaScrollFlowLayout (1.1)
 
 DEPENDENCIES:
-  - CalculateCalendarLogic
   - CropViewController
   - DZNEmptyDataSet
-  - FSCalendar
-  - Material (~> 3.1.0)
   - NYXImagesKit
   - RealmSwift
-  - SideMenu (~> 6.0)
   - SwiftyJSON (~> 5.0)
   - Tabman (~> 2.6)
+  - VegaScrollFlowLayout
 
 SPEC REPOS:
   trunk:
     - AutoInsetter
-    - CalculateCalendarLogic
     - CropViewController
     - DZNEmptyDataSet
-    - FSCalendar
-    - Material
-    - Motion
     - NYXImagesKit
     - Pageboy
     - Realm
     - RealmSwift
-    - SideMenu
     - SwiftyJSON
     - Tabman
+    - VegaScrollFlowLayout
 
 SPEC CHECKSUMS:
   AutoInsetter: 0b90ca74e36561c340129045a3722c51a0b15c58
-  CalculateCalendarLogic: cd5b2c706a8628bb924c5ee9d05c4f61bdbaf390
   CropViewController: 1aac40093c5739e60d992b04724a55d12a689a4c
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
-  Material: a2a3f400a3b549d53ef89e56c58c4535b29db387
-  Motion: cf1e060e489f6661126374d5c60dbd2ed991605c
   NYXImagesKit: 8163e3335a40eaa173ca5bbbf81fafb57d3947eb
   Pageboy: 3794c578aae5fcce06e90b3ed4a0ad6b807d75bb
   Realm: 38e9dcb19104b58407167d99f70d4995f7c16023
   RealmSwift: 3183cc1ad48378fbcd634311b22c0e6c44021152
-  SideMenu: 43910eb6dc994dd59771f8e82573d04a9e776361
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Tabman: 63eae331ae7a9388ae389b1808f1939269fcdece
+  VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
 
-PODFILE CHECKSUM: 746068c133122990619bdaca73aad2b05cd92786
+PODFILE CHECKSUM: 906f04563c2b8f0b04a889ae025c1bbf06c9ebcb
 
 COCOAPODS: 1.8.4
