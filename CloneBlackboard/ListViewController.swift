@@ -4,15 +4,13 @@ import SwiftyJSON
 //import SideMenu
 import CropViewController
 import DZNEmptyDataSet
-import VisionKit
-import Vision
 
 class ListViewController: UIViewController,UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropViewControllerDelegate,VNDocumentCameraViewControllerDelegate{
+UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropViewControllerDelegate{
     
     var itemList: [TodoRealm] = []
     var selectedImage:UIImage!
-    var googleAPIKey = ""
+    var googleAPIKey = "AIzaSyBk211Saf01gryTwBPi_cHWpPDfH-zDSaY"
     var googleURL: URL {
         return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
     }
@@ -23,7 +21,7 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
     var visionImage : UIImage!
     let cellHeigh:CGFloat = 103
     let session = URLSession.shared
-     let cellSpacingHeight: CGFloat = 5
+    let cellSpacingHeight: CGFloat = 5
     
     @IBOutlet var detailTableView: UITableView!
     fileprivate let refreshCtl = UIRefreshControl()
@@ -45,7 +43,7 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         refreshCtl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
         //線消し
         detailTableView.tableFooterView = UIView()
-//        setupSideMenu()
+        //        setupSideMenu()
         //        self.detailTableView.reloadData()
         
         //        let realm = try! Realm()
@@ -158,6 +156,7 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         }
         alert.addAction(action)
         alert.addAction(cancel)
+        
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -176,13 +175,10 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
             if UIImagePickerController.isSourceTypeAvailable(
                 UIImagePickerController.SourceType.camera){
                 // インスタンスの作成
-//                let cameraPicker = UIImagePickerController()
-//                cameraPicker.sourceType = sourceType
-//                cameraPicker.delegate = self
-//                self.present(cameraPicker, animated: true, completion: nil)
-                                let cameraViewController = VNDocumentCameraViewController()
-                                cameraViewController.delegate = self
-                                self.present(cameraViewController, animated: true)
+                let cameraPicker = UIImagePickerController()
+                cameraPicker.sourceType = sourceType
+                cameraPicker.delegate = self
+                self.present(cameraPicker, animated: true, completion: nil)
             }
             else{
                 print("error")
@@ -220,28 +216,16 @@ UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CropVie
         alert.addAction(photoAction)
         alert.addAction(cancel)
         
+        // iPad の場合のみ、ActionSheetを表示するための必要な設定
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            alert.popoverPresentationController?.sourceView = self.view
+            let screenSize = UIScreen.main.bounds
+            alert.popoverPresentationController?.sourceRect = CGRect(x: screenSize.size.width / 2,y: screenSize.size.height,width: 0,height: 0)
+        }
+        
         self.present(alert, animated: true, completion: nil)
         
     }
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-        controller.dismiss(animated: true)
-        for pageIndex in 0 ..< scan.pageCount{
-            visionImage = scan.imageOfPage(at: pageIndex)
-            selectedImage = visionImage
-            let binaryImageData = base64EncodeImage(self.selectedImage)
-            createRequest(with: binaryImageData)
-        }
-    }
-//    //MARK:setupSideMenu
-//    private func setupSideMenu() {
-//        // Define the menus
-//        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
-//
-//        // Enable gestures. The left and/or right menus must be set up above for these to work.
-//        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
-//        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
-//    }
     
 }
 
@@ -314,7 +298,7 @@ extension ListViewController {
             let cropController = CropViewController(croppingStyle: croppingStyle, image: pickedImage)
             cropController.delegate = self
             
-//            self.selectedImage = pickedImage
+            //            self.selectedImage = pickedImage
             
             if croppingStyle == .circular {
                 if picker.sourceType == .camera {
@@ -335,7 +319,7 @@ extension ListViewController {
         }
         //        dismiss(animated: true, completion: nil)
     }
-
+    
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -477,6 +461,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 //    }
 //}
 //MARK:Empty
+
 extension ListViewController:DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
