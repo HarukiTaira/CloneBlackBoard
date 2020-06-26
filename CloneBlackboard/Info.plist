@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>解析するために写真を撮る必要があります。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>解析する画像を選択するために必要です。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
